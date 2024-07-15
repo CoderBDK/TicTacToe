@@ -57,10 +57,6 @@ class MainViewModel : ViewModel() {
         if (!uiState.states[i][j].first) {
             uiState.states[i][j] = Pair(true, !uiState.isCurrentPlayerTurn)
 
-            val isGameWon =
-                uiState.gameState == GameEngine.GameState.WON_PLAYER1 || uiState.gameState == GameEngine.GameState.WON_PLAYER2
-            val isGameOver = isGameWon || uiState.gameState == GameEngine.GameState.TIE
-
             gameEngine.checkGameState(uiState.states) { state, gameWonIdx ->
                 uiState = uiState.copy(
                     gameState = state,
