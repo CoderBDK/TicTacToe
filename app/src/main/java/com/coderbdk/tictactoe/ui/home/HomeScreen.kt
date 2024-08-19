@@ -9,20 +9,31 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentSize
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
+import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.LocalConfiguration
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -33,9 +44,11 @@ import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.constraintlayout.compose.Dimension
 import androidx.navigation.NavController
 import androidx.navigation.compose.rememberNavController
+import com.coderbdk.tictactoe.R
 import com.coderbdk.tictactoe.Screen
 import com.coderbdk.tictactoe.navigate
 import com.coderbdk.tictactoe.ui.theme.TicTacToeTheme
+import java.util.Locale
 
 @Composable
 fun HomeScreen(navController: NavController) {
@@ -44,36 +57,43 @@ fun HomeScreen(navController: NavController) {
     ConstraintLayout(
         modifier = Modifier
             .fillMaxSize()
+            .background(
+                brush = Brush.linearGradient(
+                    listOf(
+                        colorScheme.primaryContainer,
+                        colorScheme.surfaceDim,
+                        colorScheme.primaryContainer
+                    )
+                )
+            )
     ) {
-        val (share,settings,sound,help, menu) = createRefs()
+        val (share, settings, sound, help, menu) = createRefs()
 
-        Button(
+        ElevatedButton(
             modifier = Modifier
                 .padding(8.dp)
                 .constrainAs(share) {
                     start.linkTo(parent.start)
                     top.linkTo(parent.top)
                 },
+            shape = RoundedCornerShape(8.dp),
             onClick = { /*TODO*/ }) {
             Text(text = "Share")
         }
-        Button(
+        ElevatedButton(
             modifier = Modifier
                 .padding(8.dp)
                 .constrainAs(settings) {
                     end.linkTo(parent.end)
                     top.linkTo(parent.top)
                 },
+            shape = RoundedCornerShape(8.dp),
             onClick = { /*TODO*/ }) {
             Text(text = "Settings")
         }
 
         Column(
             modifier = Modifier
-                .background(
-                    color = MaterialTheme.colorScheme.surfaceVariant
-                )
-                .padding(8.dp)
                 .constrainAs(menu) {
                     start.linkTo(parent.start)
                     top.linkTo(share.bottom)
@@ -86,67 +106,122 @@ fun HomeScreen(navController: NavController) {
         ) {
             Text(
                 modifier = Modifier
-                    .padding(bottom = 16.dp),
-                text = "Tic\nTacToe",
+                    .padding(bottom = 40.dp),
+                text = "Tic \nTac Toe",
                 fontSize = 64.sp,
                 lineHeight = 64.sp,
                 textAlign = TextAlign.Center,
                 fontWeight = FontWeight.Bold,
-                fontFamily = FontFamily.Cursive,
+                fontFamily = FontFamily.Serif,
+                style = TextStyle(
+                   color = colorScheme.surface,
+                    shadow = Shadow(
+                        color = colorScheme.primary,
+                        blurRadius = 8f
+                    )
+                )
             )
-            Button(
-                modifier = Modifier.padding(start = 24.dp, end = 24.dp, bottom = 8.dp),
-                onClick = {  navigate(navController, Screen.OfflineTwoPlayer) }) {
+            ElevatedButton(
+                modifier = Modifier
+                    .height(64.dp)
+                    .padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+                shape = RoundedCornerShape(8.dp),
+                onClick = { navigate(navController, Screen.OfflineTwoPlayer) }) {
                 Row(
-                    Modifier.fillMaxWidth()
+                    Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Icon(imageVector = Icons.Default.AccountBox, contentDescription = "play icon")
-                    Text(text = "Offline Two Player", fontSize = 24.sp)
+                    Icon(
+                        modifier = Modifier
+                            .size(40.dp),
+                        painter = painterResource(id = R.drawable.baseline_people_24),
+                        contentDescription = "play icon"
+                    )
+                    Text(
+                        modifier = Modifier
+                            .padding(4.dp)
+                            .fillMaxWidth(),
+                        text = "Offline Two Player".uppercase(),
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.Justify,
+                        fontWeight = FontWeight.Bold,
+                    )
                 }
 
             }
-            Button(
-                modifier = Modifier.padding(start = 24.dp, end = 24.dp, bottom = 8.dp),
-                onClick = {  navigate(navController, Screen.OfflineVsComputer) }) {
+            ElevatedButton(
+                modifier = Modifier
+                    .height(64.dp)
+                    .padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+                shape = RoundedCornerShape(8.dp),
+                onClick = { navigate(navController, Screen.OfflineVsComputer) }) {
                 Row(
-                    Modifier.fillMaxWidth()
+                    Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                    // Icon(imageVector = Icons.Default.AccountBox, contentDescription = "play icon")
-                    Text(text = "Player Vs Computer", fontSize = 24.sp)
+                    Icon(
+                        modifier = Modifier
+                            .size(40.dp),
+                        imageVector = Icons.Default.Person, contentDescription = "play icon"
+                    )
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(4.dp),
+                        text = "Player Vs Computer".uppercase(),
+                        fontSize = 24.sp,
+                        textAlign = TextAlign.Justify
+                    )
                 }
 
 
             }
-            Button(
-                modifier = Modifier.padding(start = 24.dp, end = 24.dp, bottom = 8.dp),
-                onClick = {  navigate(navController, Screen.OfflineTwoPlayer) }) {
+           ElevatedButton(
+                modifier = Modifier
+                    .height(64.dp)
+                    .padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
+                shape = RoundedCornerShape(8.dp),
+                onClick = { navigate(navController, Screen.OfflineTwoPlayer) }) {
                 Row(
-                    Modifier.fillMaxWidth()
+                    Modifier.fillMaxWidth(),
+                    verticalAlignment = Alignment.CenterVertically
                 ) {
-                   // Icon(imageVector = Icons.Default.AccountBox, contentDescription = "play icon")
-                    Text(text = "Online Two Player",fontSize = 24.sp)
+                    Icon(
+                        modifier = Modifier
+                            .size(40.dp),
+                        painter = painterResource(id = R.drawable.baseline_connect_without_contact_24), contentDescription = "play icon"
+                    )
+                    Text(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(4.dp),
+                        text = "Online Two Player".uppercase(), fontSize = 24.sp,
+                        textAlign = TextAlign.Justify
+                    )
                 }
 
             }
         }
 
-        Button(
+       ElevatedButton(
             modifier = Modifier
                 .padding(8.dp)
                 .constrainAs(sound) {
                     start.linkTo(parent.start)
                     bottom.linkTo(parent.bottom)
                 },
+           shape = RoundedCornerShape(8.dp),
             onClick = { /*TODO*/ }) {
             Text(text = "Sound")
         }
-        Button(
+       ElevatedButton(
             modifier = Modifier
                 .padding(8.dp)
                 .constrainAs(help) {
                     end.linkTo(parent.end)
                     bottom.linkTo(parent.bottom)
                 },
+            shape = RoundedCornerShape(8.dp),
             onClick = { /*TODO*/ }) {
             Text(text = "Help")
         }
@@ -157,7 +232,10 @@ fun HomeScreen(navController: NavController) {
 @Preview(showBackground = true)
 @Composable
 fun HomePreview(modifier: Modifier = Modifier) {
-    TicTacToeTheme {
+    TicTacToeTheme(
+        dynamicColor = false,
+        darkTheme = false
+    ) {
         HomeScreen(navController = rememberNavController())
     }
 }

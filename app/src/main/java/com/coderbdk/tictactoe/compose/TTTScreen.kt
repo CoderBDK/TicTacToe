@@ -42,7 +42,7 @@ fun TTTScreen(
     checkGameState: (Int, Int) -> Unit,
     resetGame: () -> Unit
 ) {
-    var size by remember { mutableFloatStateOf(40f) }
+    var size by remember { mutableFloatStateOf(80f) }
 
     val isGameWon =
         uiState.gameState == GameEngine.GameState.WON_PLAYER1 || uiState.gameState == GameEngine.GameState.WON_PLAYER2
