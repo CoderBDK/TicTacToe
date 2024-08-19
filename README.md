@@ -5,6 +5,7 @@ This is a simple implementation of the classic TicTacToe game using Jetpack Comp
 ## Screenshots
 
 <div align="center">
+ <img src="screenshots/screenshot0.png" alt="Screenshot 1" width="300" />
   <img src="screenshots/screenshot1.png" alt="Screenshot 1" width="300" />
   <img src="screenshots/screenshot2.png" alt="Screenshot 2" width="300" />
   <img src="screenshots/screenshot3.png" alt="Screenshot 3" width="300" />
