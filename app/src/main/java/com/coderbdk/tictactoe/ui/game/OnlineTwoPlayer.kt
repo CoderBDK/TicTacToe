@@ -8,7 +8,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.coderbdk.tictactoe.compose.TTTScreen
 import com.coderbdk.tictactoe.ui.theme.TicTacToeTheme
-import com.coderbdk.tictactoe.viewmodel.OfflineVsComputerViewModel
 import com.coderbdk.tictactoe.viewmodel.OnlinePlayerViewModel
 
 @Composable
@@ -21,7 +20,7 @@ fun OnlineTwoPlayerScreen(viewModel: OnlinePlayerViewModel) {
         TTTScreen(
             uiState = viewModel.uiState,
             checkGameState = { i, j ->
-               viewModel.checkGameState(i, j)
+                viewModel.checkGameState(i, j)
             }, resetGame = {
                 viewModel.resetGame()
             })

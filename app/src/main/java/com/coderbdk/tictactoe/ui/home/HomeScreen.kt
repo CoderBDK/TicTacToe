@@ -10,26 +10,17 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material.icons.filled.Person
-import androidx.compose.material3.Button
-import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shadow
 import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
@@ -48,7 +39,6 @@ import com.coderbdk.tictactoe.R
 import com.coderbdk.tictactoe.Screen
 import com.coderbdk.tictactoe.navigate
 import com.coderbdk.tictactoe.ui.theme.TicTacToeTheme
-import java.util.Locale
 
 @Composable
 fun HomeScreen(navController: NavController) {
@@ -114,7 +104,7 @@ fun HomeScreen(navController: NavController) {
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Serif,
                 style = TextStyle(
-                   color = colorScheme.surface,
+                    color = colorScheme.surface,
                     shadow = Shadow(
                         color = colorScheme.primary,
                         blurRadius = 8f
@@ -176,7 +166,7 @@ fun HomeScreen(navController: NavController) {
 
 
             }
-           ElevatedButton(
+            ElevatedButton(
                 modifier = Modifier
                     .height(64.dp)
                     .padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
@@ -189,7 +179,8 @@ fun HomeScreen(navController: NavController) {
                     Icon(
                         modifier = Modifier
                             .size(40.dp),
-                        painter = painterResource(id = R.drawable.baseline_connect_without_contact_24), contentDescription = "play icon"
+                        painter = painterResource(id = R.drawable.baseline_connect_without_contact_24),
+                        contentDescription = "play icon"
                     )
                     Text(
                         modifier = Modifier
@@ -203,18 +194,18 @@ fun HomeScreen(navController: NavController) {
             }
         }
 
-       ElevatedButton(
+        ElevatedButton(
             modifier = Modifier
                 .padding(8.dp)
                 .constrainAs(sound) {
                     start.linkTo(parent.start)
                     bottom.linkTo(parent.bottom)
                 },
-           shape = RoundedCornerShape(8.dp),
+            shape = RoundedCornerShape(8.dp),
             onClick = { /*TODO*/ }) {
             Text(text = "Sound")
         }
-       ElevatedButton(
+        ElevatedButton(
             modifier = Modifier
                 .padding(8.dp)
                 .constrainAs(help) {
