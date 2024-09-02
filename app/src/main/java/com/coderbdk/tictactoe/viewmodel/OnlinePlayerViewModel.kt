@@ -77,17 +77,20 @@ class OnlinePlayerViewModel() : ViewModel() {
                 // Handle room creation
                 _gameState.postValue("Room Created")
             }
+
             "startGame" -> {
                 // Handle game start
                 _gameState.postValue("Game Started")
             }
+
             "updateGameState" -> {
                 // Handle game state update
                 _gameState.postValue("Game State Updated")
-                if(json.optBoolean("move")) {
+                if (json.optString("action") == "move") {
                     updateGameState(json)
                 }
             }
+
             "roomClosed" -> {
                 // Handle room closure
                 _gameState.postValue("Room Closed")
