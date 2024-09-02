@@ -21,7 +21,7 @@ fun OnlineTwoPlayerScreen(viewModel: OnlinePlayerViewModel) {
         TTTScreen(
             uiState = viewModel.uiState,
             checkGameState = { i, j ->
-                viewModel.checkGameState(i, j)
+               viewModel.checkGameState(i, j)
             }, resetGame = {
                 viewModel.resetGame()
             })

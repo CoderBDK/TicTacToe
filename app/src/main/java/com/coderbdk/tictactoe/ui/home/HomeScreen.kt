@@ -181,7 +181,7 @@ fun HomeScreen(navController: NavController) {
                     .height(64.dp)
                     .padding(start = 16.dp, end = 16.dp, bottom = 8.dp),
                 shape = RoundedCornerShape(8.dp),
-                onClick = { navigate(navController, Screen.OfflineTwoPlayer) }) {
+                onClick = { navigate(navController, Screen.OnlineTwoPlayer) }) {
                 Row(
                     Modifier.fillMaxWidth(),
                     verticalAlignment = Alignment.CenterVertically

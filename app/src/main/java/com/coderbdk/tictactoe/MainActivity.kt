@@ -28,6 +28,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.coderbdk.tictactoe.ui.game.OfflineTwoPlayerScreen
 import com.coderbdk.tictactoe.ui.game.OfflineVsComputerScreen
+import com.coderbdk.tictactoe.ui.game.OnlineTwoPlayerScreen
 import com.coderbdk.tictactoe.ui.home.HomeScreen
 import com.coderbdk.tictactoe.ui.theme.TicTacToeTheme
 import kotlinx.coroutines.delay
@@ -78,7 +79,7 @@ private fun MainUi(
         }
         composable(Screen.Home.route) { HomeScreen(navController = navController) }
         composable(Screen.OfflineTwoPlayer.route) { OfflineTwoPlayerScreen(viewModel = viewModel()) }
-        composable(Screen.OfflineVsComputer.route) { OfflineVsComputerScreen(viewModel = viewModel()) }
+        composable(Screen.OnlineTwoPlayer.route) { OnlineTwoPlayerScreen(viewModel = viewModel()) }
     }
 }
 

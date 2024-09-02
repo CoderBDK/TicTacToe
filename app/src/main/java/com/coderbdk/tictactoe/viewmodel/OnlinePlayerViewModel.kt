@@ -26,6 +26,8 @@ class OnlinePlayerViewModel() : ViewModel() {
 
     private val gameEngine = GameEngine()
 
+   private var isOnlinePlayerTurn = false
+
     var uiState by mutableStateOf(
         UiState(
             gameState = GameEngine.GameState.UNKNOWN,
@@ -43,6 +45,7 @@ class OnlinePlayerViewModel() : ViewModel() {
 
 
     fun checkGameState(i: Int, j: Int) {
+        if(!isOnlinePlayerTurn)
         if (!uiState.states[i][j].first) {
             // Player move
             uiState.states[i][j] = Pair(true, true)
@@ -53,6 +56,7 @@ class OnlinePlayerViewModel() : ViewModel() {
                     states = uiState.states,
                     gameWonIndex = gameWonIdx
                 )
+                isOnlinePlayerTurn = true
             }
         }
     }
@@ -109,6 +113,7 @@ class OnlinePlayerViewModel() : ViewModel() {
                 states = uiState.states,
                 gameWonIndex = gameWonIdx
             )
+            isOnlinePlayerTurn = false
         }
     }
 
@@ -129,6 +134,7 @@ class OnlinePlayerViewModel() : ViewModel() {
     }
 
     fun resetGame() {
+        isOnlinePlayerTurn = false
         uiState = uiState.copy(
             gameState = GameEngine.GameState.UNKNOWN,
             isCurrentPlayerTurn = true, // Player starts first again
