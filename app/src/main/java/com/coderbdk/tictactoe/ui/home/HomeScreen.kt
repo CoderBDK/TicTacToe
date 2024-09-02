@@ -57,9 +57,9 @@ fun HomeScreen(navController: NavController) {
             .background(
                 brush = Brush.linearGradient(
                     listOf(
-                        colorScheme.surfaceDim,
+                        colorScheme.outline,
                         colorScheme.primaryContainer,
-                        colorScheme.primaryContainer
+                        colorScheme.outline
                     )
                 )
             )
