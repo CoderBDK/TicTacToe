@@ -55,13 +55,7 @@ fun HomeScreen(navController: NavController) {
         modifier = Modifier
             .fillMaxSize()
             .background(
-                brush = Brush.linearGradient(
-                    listOf(
-                        colorScheme.outline,
-                        colorScheme.primaryContainer,
-                        colorScheme.outline
-                    )
-                )
+              color = colorScheme.primary
             )
     ) {
         val (share, settings, sound, help, menu) = createRefs()
@@ -83,7 +77,8 @@ fun HomeScreen(navController: NavController) {
                 .constrainAs(settings) {
                     end.linkTo(parent.end)
                     top.linkTo(parent.top)
-                },
+                }
+            ,
             shape = RoundedCornerShape(8.dp),
             onClick = { /*TODO*/ }) {
             Text(text = "Settings")
@@ -91,26 +86,13 @@ fun HomeScreen(navController: NavController) {
 
         Column(
             modifier = Modifier
-                .wrapContentHeight()
                 .padding(top = 8.dp, start = 8.dp, end = 8.dp)
                 .shadow(
                     elevation = 4.dp,
                     shape = RoundedCornerShape(8.dp)
                 )
                 .background(
-                    color = colorScheme.surface,
-                    shape = RoundedCornerShape(8.dp)
-                )
-                .padding(start = 4.dp, end = 4.dp)
-                .padding(top = 2.dp)
-                .background(
-                   brush = Brush.linearGradient(
-                       listOf(
-                           colorScheme.primaryContainer,
-                           colorScheme.surfaceVariant,
-                           colorScheme.surfaceDim
-                       )
-                   ),
+                    color = colorScheme.tertiary,
                     shape = RoundedCornerShape(8.dp)
                 )
                 .padding(bottom = 8.dp)
@@ -134,9 +116,9 @@ fun HomeScreen(navController: NavController) {
                 fontWeight = FontWeight.Bold,
                 fontFamily = FontFamily.Serif,
                 style = TextStyle(
-                    color = colorScheme.surface,
+                    color = colorScheme.onPrimary,
                     shadow = Shadow(
-                        color = colorScheme.outline,
+                        color = colorScheme.primaryContainer,
                         blurRadius = 8f
                     )
                 )
@@ -147,13 +129,13 @@ fun HomeScreen(navController: NavController) {
                     .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
                     .border(
                         width = 1.dp,
-                        color = colorScheme.surface,
+                        color = colorScheme.outline,
                         shape = RoundedCornerShape(8.dp)
                     ),
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.elevatedButtonColors(
-                    containerColor = colorScheme.surfaceVariant,
-                    contentColor = colorScheme.onSurfaceVariant
+                    containerColor = colorScheme.secondary,
+                    contentColor = colorScheme.onSecondary
                 ),
                 onClick = { navigate(navController, Screen.OfflineTwoPlayer) }) {
                 Row(
@@ -183,13 +165,13 @@ fun HomeScreen(navController: NavController) {
                     .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
                     .border(
                         width = 1.dp,
-                        color = colorScheme.surface,
+                        color = colorScheme.outline,
                         shape = RoundedCornerShape(8.dp)
                     ),
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.elevatedButtonColors(
-                    containerColor = colorScheme.surfaceVariant,
-                    contentColor = colorScheme.onSurfaceVariant
+                    containerColor = colorScheme.secondary,
+                    contentColor = colorScheme.onSecondary
                 ),
                 onClick = { navigate(navController, Screen.OfflineVsComputer) }) {
                 Row(
@@ -219,13 +201,13 @@ fun HomeScreen(navController: NavController) {
                     .padding(start = 16.dp, end = 16.dp, bottom = 8.dp)
                     .border(
                         width = 1.dp,
-                        color = colorScheme.surface,
+                        color = colorScheme.outline,
                         shape = RoundedCornerShape(8.dp)
                     ),
                 shape = RoundedCornerShape(8.dp),
                 colors = ButtonDefaults.elevatedButtonColors(
-                    containerColor = colorScheme.surfaceVariant,
-                    contentColor = colorScheme.onSurfaceVariant
+                    containerColor = colorScheme.secondary,
+                    contentColor = colorScheme.onSecondary
                 ),
                 onClick = { navigate(navController, Screen.OnlineTwoPlayer) }) {
                 Row(
