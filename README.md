@@ -15,6 +15,8 @@ This is a simple implementation of the classic TicTacToe game using Jetpack Comp
 
 - **Interactive UI**: Utilizes Jetpack Compose for building a modern and interactive user interface.
 - **Two Player Mode**: Play against another person on the same device.
+- **Computer Mode**: Play against an AI opponent with adjustable difficulty.
+- **Online Player Mode**: Challenge an opponent online in real-time.
 - **Win Detection**: Automatically detects winning conditions and highlights winning moves.
 - **Reset Game**: Option to reset the game and start over.
 - **Scalable Design**: The UI is designed to scale properly on different screen sizes.
